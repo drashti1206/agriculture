@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Inline styles for simplicity */
+    body { background-image: url('images/background.jpg'); background-size: cover; }
+    .form-container { max-width: 400px; margin: 100px auto; padding: 20px; background: rgba(255, 255, 255, 0.8); border-radius: 8px; }
+    .btn-login { background-color: #7fad39; color: white; } /* Custom style for Login button */
+    .btn-login:hover { background-color: #6d9431; } /* Darker shade on hover */
+    .links { text-align: left; }
+    .links a { color: #007bff; text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <h2 class="text-center">Login</h2>
+    <form id="loginForm" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" required>
+      </div>
+
+      <!-- Forgot Password link below password field -->
+      <div class="links">
+        <a href="forget.html">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-login btn-block mt-3">Login</button>
+
+      <!-- Register link below login button with a message -->
+      <div class="links mt-2">
+        <p>Don't have an account? <a href="register.html">Register Here</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+      alert("Login successful!");
+      window.location.href = "main.html";
+    }
+  </script>
+</body>
+
+</html>
