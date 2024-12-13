@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title>Agriculture</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header id="home">
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <h1>FRUIT</h1>
+        </div>
+        <ul id="menu">
+          <li><a href="#">HOME</a></li>
+          <li>
+            <a href="#">FEATURES</a>
+            <ul>
+              <li><a href="#">Feature 1</a></li>
+              <li><a href="#">Feature 2</a></li>
+              <li><a href="#">Feature 3</a></li>
+            </ul>
+          </li>
+          <li><a href="#">DOCUMENTATION</a></li>
+          <li>
+            <a href="#">SUPPORT</a>
+            <ul>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Live Chat</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- User icon container -->
+        <div class="icon_box">
+          <div class="user-container">
+            <!-- Replacing the icon with an image -->
+            <img src="icon.png" alt="User Icon" id="user-icon" class="user-icon-image">
+          </div>
+          <!-- Hamburger icon -->
+          <i id="icon" class="fa fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <script>
+    // Get the hamburger icon and menu
+    const menuIcon = document.getElementById('icon');
+    const menu = document.querySelector('#menu');
+
+    // Toggle the visibility of the menu on click
+    menuIcon.addEventListener('click', (event) => {
+      menu.classList.toggle('show');
+      event.stopPropagation();  // Prevent the click from closing the menu immediately
+    });
+
+    // Close the menu if clicking outside the menu or the hamburger icon
+    document.addEventListener('click', (event) => {
+      const isClickInside = menu.contains(event.target) || menuIcon.contains(event.target);
+      if (!isClickInside) {
+        menu.classList.remove('show');
+      }
+    });
+  </script>
+  <section class="head">
+    <div class="container flex">
+      <div class="sidenav">
+        <div class="content ">
+          <div class="dropdown-btn">
+            <i class="fa fa-bars"></i>
+            <label> All departments</label>
+            <i class="fa fa-caret-down"></i>
+          </div>
+          <div class="dropdown-container">
+            <a href="#">Oatmeal</a>
+            <a href="#">Fresh Fruits</a>
+            <a href="#">Fresh Meat</a>
+            <a href="#">Seeds</a>
+            <a href="#">Fresh Vegetables</a>
+            <a href="#">Fastfood</a>
+            <a href="#">Butter & Eggs</a>
+            <a href="#">Ocean Foods</a>
+            <a href="#">Fresh Berries</a>
+            <a href="#">Fruit & Nut Gifts</a>
+          </div>
+        </div>
+      </div>
+      <div class="right ">
+        <div class="content flex">
+          <div class="top flex">
+            <div class="search">
+              <div class="content flex">
+                <div class="box">
+                </div>
+                <input type="text" placeholder="What do you you need?">
+                <span id="searchButton" onclick="searchProduct()">SEARCH</span>
+              </div>
+            </div>
+            <div class="call flex1">
+              <i class="fa fa-phone"></i>
+              <div class="contact">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom flex1">
+          <div class="text">
+            <h4>FRUIT FRESH</h4>
+            <h1>Vegetable
+              100% Organic</h1>
+            <p>Free Pickup and Delivery Available</p>
+            <br>
+            <br>
+            <br>
+            <a href="#">SHOP NOW</a>
+          </div>
+          <div class="img">
+            <div class="img-box">
+              <img src="images/h.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+  </script>
+  <script>
+    $('.owl-carousel').owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: false,
+      dots: true,
+      autoplay: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        768: {
+          items: 2
+        },
+        1000: {
+          items: 5
+        }
+      }
+    })
+  </script>
+
+  <section class="product">
+    <div class="container">
+      <div class="heading">
+        <h1>Featured Product</h1>
+      </div>
+      <div class=" content">
+        <ul>
+          <li> <a href="#">All</a> </li>
+          <li> <a href="#">Oranges</a> </li>
+          <li> <a href="#">Fresh Meat</a> </li>
+          <li> <a href="#">Vegetables</a> </li>
+          <li> <a href="#">Fastfood</a> </li>
+        </ul>
+
+        <div class="box">
+          <div class="item">
+            <div class="top">
+              <a href="product.html?id=1">
+                <img src="images/f8.jpg" alt="">
+              </a>
+              <div class="overlay">
+                <div class="icon">
+                  <i class="fa fa-heart"></i>
+                  <a href="product.html?id=1">
+                    <i class="fa fa-shopping-bag"></i>
+                  </a>
+                  <i class="fa fa-retweet"></i>
+                </div>
+              </div>
+            </div>
+            <div class="text">
+              <p href="product.html?id=2">Oatmeals</p>
+              <h3>$13.00</h3>
+            </div>
+          </div>
+          <div class="item">
+            <div class="top">
+              <a href="product1.html?id=2">
+              <img src="images/seeds.jpg" alt="">
+              </a>
+              <div class="overlay">
+                <div class="icon">
+                  <i class="fa fa-heart"></i>
+                  <a href="product1.html?id=2">
+                  <i class="fa fa-shopping-bag"></i>
+                  </a>
+                  <i class="fa fa-retweet"></i>
+                </div>
+              </div>
+            </div>
+            <div class="text">
+              <p>Seeds</p>
+              <h3>$80.00</h3>
+            </div>
+          </div>
+          <div class="item">
+            <div class="top">
+              <a href="product2.html?id=3">
+              <img src="images/b1.jpg" alt="">
+              </a>
+              <div class="overlay">
+                <div class="icon">
+                  <i class="fa fa-heart"></i>
+                  <a href="product2.html?id=3">
+                  <i class="fa fa-shopping-bag"></i>
+                  </a>
+                  <i class="fa fa-retweet"></i>
+                </div>
+              </div>
+            </div>
+            <div class="text">
+              <p>Fresh Vegetables</p>
+              <h3>$25.00</h3>
+            </div>
+          </div>
+          <div class="item">
+            <div class="top">
+              <a href="product3.html?id=4">
+              <img src="images/eggs.jpg" alt="">
+              </a>
+              <div class="overlay">
+                <div class="icon">
+                  <i class="fa fa-heart"></i>
+                  <a href="product3.html?id=4">
+                  <i class="fa fa-shopping-bag"></i>
+                  </a>
+                  <i class="fa fa-retweet"></i>
+                </div>
+              </div>
+            </div>
+            <div class="text">
+              <p>Butter & Eggs</p>
+              <h3>$40.00</h3>
+            </div>
+          </div>
+          <div class="item">
+            <div class="top">
+              <a href="product4.html?id=5">
+              <img src="images/f2.jpg" alt="">
+              </a>
+              <div class="overlay">
+                <div class="icon">
+                  <i class="fa fa-heart"></i>
+                  <a href="product4.html?id=5">
+                  <i class="fa fa-shopping-bag"></i>
+                  </a>
+                  <i class="fa fa-retweet"></i>
+                </div>
+              </div>
+            </div>
+            <div class="text">
+              <p>Fresh Fruits</p>
+              <h3>$30.00</h3>
+            </div>
+          </div>
+          <div class="item">
+            <div class="top">
+              <a href="product5.html?id=6">
+              <img src="images/ocean.jpg" alt="">
+              </a>
+              <div class="overlay">
+                <div class="icon">
+                  <i class="fa fa-heart"></i>
+                  <a href="product5.html?id=6">
+                  <i class="fa fa-shopping-bag"></i>
+                  </a>
+                  <i class="fa fa-retweet"></i>
+                </div>
+              </div>
+            </div>
+            <div class="text">
+              <p>Ocean Food</p>
+              <h3>$125.00</h3>
+            </div>
+          </div>
+          <div class="item">
+            <div class="top">
+              <a href="product6.html?id=7">
+              <img src="images/nuts.jpg" alt="">
+              </a>
+              <div class="overlay">
+                <div class="icon">
+                  <i class="fa fa-heart"></i>
+                  <a href="product6.html?id=7">
+                  <i class="fa fa-shopping-bag"></i>
+                  </a>
+                  <i class="fa fa-retweet"></i>
+                </div>
+              </div>
+            </div>
+            <div class="text">
+              <p>Fruits & Nuts</p>
+              <h3>$75.00</h3>
+            </div>
+          </div>
+          <div class="item">
+            <div class="top">
+              <a href="product7.html?id=8">
+              <img src="images/f7.jpg" alt="">
+              </a>
+              <div class="overlay">
+                <div class="icon">
+                  <i class="fa fa-heart"></i>
+                  <a href="product7.html?id=8">
+                  <i class="fa fa-shopping-bag"></i>
+                  </a>
+                  <i class="fa fa-retweet"></i>
+                </div>
+              </div>
+            </div>
+            <div class="text">
+              <p>Beverages</p>
+              <h3>$40.00</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="offer">
+    <div class="container">
+      <div class="content  ">
+        <div class="left flex1">
+          <div class="img">
+            <img src="images/summer.jpg" alt="">
+          </div>
+          <div class="text">
+            <h1>Summer Fruit</h1>
+            <p>100% Pure Natural Fruits</p>
+            <a href="#" class="btn1">SHOP</a>
+          </div>
+        </div>
+        <div class="left flex1">
+          <div class="img">
+            <img src="images/winter.jpg" alt="">
+          </div>
+          <div class="text">
+            <h1>Winter Fruit</h1>
+            <p>100% Pure Natural Fruits</p>
+            <a href="#" class="btn1">SHOP</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+
+  <footer>
+    <div class="container">
+      <div class="content">
+
+        <div class="left">
+          <div class="logo">
+            <h1>FRUIT</h1>
+          </div>
+          <div class="para">
+            <p>
+              Address: Gujarat <br><br>
+              Surat <br><br>
+              Phone: +91 9824119633 <br><br>
+              Email: hello@colorlib.com <br><br>
+            </p>
+          </div>
+        </div>
+
+        <div class="middle">
+          <h3>Useful Links</h3>
+          <ul>
+            <li>About Us</li>
+            <li>About Our Shop</li>
+            <li>Secure Shopping</li>
+            <li> Delivery infomation</li>
+            <li> Privacy Policy</li>
+            <li> Our Sitemap</li>
+          </ul>
+        </div>
+
+        <div class="middle_second">
+          <ul>
+            <li> Who We Are</li>
+            <li> Our Services</li>
+            <li> Projects</li>
+            <li> Contact</li>
+            <li> Innovation</li>
+            <li> Testimonials</li>
+          </ul>
+        </div>
+
+        <div class="right">
+          <h3>Join Our Newsletter Now</h3>
+          <p>Get E-mail updates about our latest shop and special offers.</p>
+          <div class="email flex1">
+            <input type="text" placeholder="Enter Your Email">
+            <h4>SUBSCRIBE</h4>
+          </div>
+          <div class="social_iocn">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-youtube"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="payament flex">
+        <p>Copyright (c) 2021 Copyright Holder All Rights Reserved.</p>
+        <div class="payament_icon">
+          <div class="img">
+            <img src="images/i1.png" alt="">
+            <img src="images/i2.png" alt="">
+            <img src="images/i3.png" alt="">
+            <img src="images/i4.png" alt="">
+            <img src="images/i5.png" alt="">
+            <img src="images/i6.png" alt="">
+            <img src="images/i7.png" alt="">
+            <img src="images/i8.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

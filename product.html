@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <title>Product Page</title>
+</head>
+<body>
+    <header>
+        <h1>Product Page</h1>
+        <nav>
+            <a href="main.html">Home</a>
+            <button id="shopping-bag-btn" onclick="showCartModal()">Shopping Bag</button>
+        </nav>
+    </header>
+
+    <div class="product-detail">
+        <img id="product-image" src="images/thankyou.jpg" alt="Product Image">
+        <h2 id="product-name">Sample Product</h2>
+        <p id="product-description">This is a sample product description.</p>
+        <label for="quantity">Quantity:</label>
+        <div class="quantity-control">
+            <button id="decrement" onclick="changeQuantity(-1)">-</button>
+            <input type="number" id="quantity" value="1" min="1" readonly>
+            <button id="increment" onclick="changeQuantity(1)">+</button>
+        </div>
+        <button id="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <!-- Modal Structure for Cart Confirmation -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>✔ Added To Cart Successfully!</h2>
+            <p id="cart-info">There are <span id="cart-quantity">0</span> items in your cart.</p>
+            <p>Total Price: <strong>$<span id="cart-total-price">0.00</span></strong></p>
+            <button onclick="continueShopping()">Continue Shopping</button>
+            <button onclick="viewCart()">View Cart</button>
+        </div>
+    </div>
+
+    <script>
+        let cartQuantity = 0;
+        let cartTotalPrice = 0;
+
+        function changeQuantity(amount) {
+            // Get current quantity and update it
+            let quantityInput = document.getElementById('quantity');
+            let currentQuantity = parseInt(quantityInput.value);
+
+            // Ensure the quantity doesn't go below 1
+            let newQuantity = currentQuantity + amount;
+            if (newQuantity >= 1) {
+                quantityInput.value = newQuantity;
+            }
+        }
+
+        function addToCart() {
+            // Get quantity from the input field
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const pricePerItem = 13; // Example price per item, adjust as needed
+
+            // Update cart quantity and total price
+            cartQuantity += quantity;
+            cartTotalPrice += pricePerItem * quantity;
+
+            // Update the modal's text
+            document.getElementById('cart-quantity').textContent = cartQuantity;
+            document.getElementById('cart-total-price').textContent = cartTotalPrice.toFixed(2);
+
+            // Show the modal
+            showCartModal();
+        }
+
+        function showCartModal() {
+            document.getElementById('cart-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        function continueShopping() {
+            closeModal(); // Close the modal
+        }
+
+        function viewCart() {
+            closeModal(); // Close the modal
+            // Redirect to the cart page or show cart details
+            window.location.href = 'cart.html';
+        }
+    </script>
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a,
+        nav button {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav button {
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            cursor: pointer;
+        }
+
+        nav button:hover {
+            background-color: #45a049;
+        }
+
+        /* Product Detail Section */
+        .product-detail {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .product-detail img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .product-detail h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .product-detail p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .product-detail label {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .quantity-control button {
+            padding: 5px 15px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .quantity-control button:hover {
+            background-color: #45a049;
+        }
+
+        .product-detail input {
+            width: 50px;
+            padding: 5px;
+            text-align: center;
+            font-size: 16px;
+            margin: 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .product-detail button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .product-detail button:hover {
+            background-color: #45a049;
+        }
+
+        /* Modal CSS */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            color: black;
+        }
+
+        .modal h2 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .modal p {
+            margin: 10px 0;
+        }
+
+        .modal button {
+            margin: 10px 5px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .modal button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</body>
+</html>
