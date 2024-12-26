@@ -1,0 +1,22 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('/products')
+            .then(response => response.json())
+            .then(products => {
+                console.log(products);
+                // Code to dynamically create product elements and display them in the DOM
+                const productContainer = document.createElement('div');
+                products.forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.innerHTML = `
+                        <h3>${product.name}</h3>
+                        <p>Price: $${product.price}</p>
+                        <img src="${product.image}" alt="${product.name}">
+                    `;
+                    productContainer.appendChild(productElement);
+                });
+                document.body.appendChild(productContainer);
+            })
+            .catch(error => console.error('Error fetching products:', error));
+    });
+</script>

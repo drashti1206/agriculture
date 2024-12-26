@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Inline styles for simplicity */
+    body { background-image: url('images/background.jpg'); background-size: cover; }
+    .form-container { max-width: 400px; margin: 100px auto; padding: 20px; background: rgba(255, 255, 255, 0.8); border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); } 
+    .btn-register { background-color: #7fad39; color: white; } /* Custom style for Register button */
+    .btn-register:hover { background-color: #6d9431; } /* Darker shade on hover */
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <h2 class="text-center">Register</h2>
+    <form id="registerForm" onsubmit="handleRegister(event)">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" required>
+      </div>
+      <button type="submit" class="btn btn-register btn-block">Register</button>
+    </form>
+    <p class="text-center mt-3">Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+
+  <script>
+    function handleRegister(event) {
+      event.preventDefault();
+      alert("Registration successful!");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+
+</html>

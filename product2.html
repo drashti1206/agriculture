@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <title>Product Page</title>
+</head>
+<body>
+    <header>
+        <h1>Product Page</h1>
+        <nav>
+            <a href="main.html">Home</a>
+            <button id="shopping-bag-btn" onclick="showCartModal()">Shopping Bag</button>
+        </nav>
+    </header>
+
+    <div class="product-detail">
+        <img id="product-image" src="images/thankyou.jpg" alt="Product Image">
+        <h2 id="product-name">Sample Product</h2>
+        <p id="product-description">This is a sample product description.</p>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" value="0" min="1">
+        <button id="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <!-- Modal Structure for Cart Confirmation -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>✔ Added To Cart Successfully!</h2>
+            <p id="cart-info">There are <span id="cart-quantity">0</span> items in your cart.</p>
+            <p>Total Price: <strong>$<span id="cart-total-price">0.00</span></strong></p>
+            <button onclick="continueShopping()">Continue Shopping</button>
+            <button onclick="viewCart()">View Cart</button>
+        </div>
+    </div>
+
+    <script>
+        let cartQuantity = 0;
+        let cartTotalPrice = 0;
+
+        function addToCart() {
+            // Get quantity from the input field
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const pricePerItem = 25; // Example price per item, adjust as needed
+
+            // Update cart quantity and total price
+            cartQuantity += quantity;
+            cartTotalPrice += pricePerItem * quantity;
+
+            // Update the modal's text
+            document.getElementById('cart-quantity').textContent = cartQuantity;
+            document.getElementById('cart-total-price').textContent = cartTotalPrice.toFixed(2);
+
+            // Show the modal
+            showCartModal();
+        }
+
+        function showCartModal() {
+            document.getElementById('cart-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        function continueShopping() {
+            closeModal(); // Close the modal
+        }
+
+        function viewCart() {
+            closeModal(); // Close the modal
+            // Redirect to the cart page or show cart details
+            window.location.href = 'cart.html';
+        }
+    </script>
+
+    <style>
+        /* Modal CSS */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            background-color: rgba(0, 0, 0, 0.2); /* Light overlay background */
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px; /* Small width for modal */
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            color: black;
+        }
+
+        .modal h2 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .modal p {
+            margin: 10px 0;
+        }
+
+        .modal button {
+            margin: 10px 5px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .modal button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</body>
+</html>
